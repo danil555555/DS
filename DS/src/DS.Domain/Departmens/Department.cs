@@ -8,7 +8,7 @@ public class Department
     private readonly List<DepartmentPosition> _positions = [];
     private readonly List<Department> _children = [];
 
-    public Guid Id { get; private set; }
+    public Guid Id { get; private set; } 
     public DepartmentName Name { get; private set; }
     public DepartmentIdentifier Identifier { get; private set; }
     public Guid? ParentId { get; private set; }

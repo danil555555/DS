@@ -9,6 +9,7 @@ public record PositionName
     
     private PositionName()
     {
+        
     }
 
     public string Name { get; private set; }
