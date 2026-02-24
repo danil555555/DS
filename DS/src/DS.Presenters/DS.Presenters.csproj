@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DS.Application\DS.Application.csproj" />
+      <ProjectReference Include="..\DS.Contracts\DS.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>
