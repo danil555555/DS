@@ -8,7 +8,7 @@ namespace DS.Presenters;
 public class DepartmentController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateDepartmentDto departmentDto)
+    public async Task<IActionResult> Create([FromBody] CreateDepartmentDto departmentDto, CancellationToken cancellationToken)
     {
         return Ok("Department created");
     }
