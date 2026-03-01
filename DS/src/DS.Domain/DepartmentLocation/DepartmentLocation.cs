@@ -8,14 +8,13 @@ public class DepartmentLocation
     public Guid DepartmentId { get; private set; }
     public Guid LocationId { get; private set; }
     
-    public Department Department { get; private set; }
-    public Location Location { get; private set; }
-
-
+    public Guid DepartmentLocationId { get; private set; }
+    
     private DepartmentLocation() { }
  
     public DepartmentLocation(Guid departmentId, Guid locationId)
     {
+        DepartmentLocationId = Guid.NewGuid();
         DepartmentId = departmentId;
         LocationId = locationId;
     }

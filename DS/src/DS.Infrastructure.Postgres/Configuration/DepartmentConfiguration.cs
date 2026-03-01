@@ -40,11 +40,9 @@ public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
         builder.Property(d => d.IsActive).HasColumnName("is_active");
         
         builder.Property(d => d.CreatedAt)
-            .HasConversion(dt=> dt.ToUniversalTime(), dt => DateTime.SpecifyKind(dt, DateTimeKind.Utc))
-            .HasColumnName("created_at");
+            .HasColumnName("created_at").IsRequired();
         
         builder.Property(d => d.UpdatedAt)
-            .HasConversion(dt => dt.ToUniversalTime(), dt => DateTime.SpecifyKind(dt, DateTimeKind.Utc))
-            .HasColumnName("updated_at");
+            .HasColumnName("updated_at").IsRequired();
     }
 }

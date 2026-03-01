@@ -26,11 +26,11 @@ public class DirectoryServiseDbContext : DbContext
 
     public DbSet<Department> Departments => Set<Department>();
 
-    //public DbSet<Location> Locations => Set<Location>();
+    public DbSet<Location> Locations => Set<Location>();
 
-    //public DbSet<Position> Positions => Set<Position>();
+    public DbSet<Position> Positions => Set<Position>();
 
-    //public DbSet<DepartmentPosition> DepartmentPositions => Set<DepartmentPosition>();
+    public DbSet<DepartmentPosition> DepartmentPositions => Set<DepartmentPosition>();
 
-    //public DbSet<DepartmentLocation> DepartmentLocations => Set<DepartmentLocation>();
+    public DbSet<DepartmentLocation> DepartmentLocations => Set<DepartmentLocation>();
 }

@@ -22,12 +22,10 @@ public class PositionConfiguration : IEntityTypeConfiguration<Position>
         builder.Property(p => p.Description).HasColumnName("position_description").IsRequired();
         
         builder.Property(p => p.CreatedAt)
-            .HasConversion(dt => dt.ToUniversalTime(), dt => DateTime.SpecifyKind(dt, DateTimeKind.Utc))
-            .HasColumnName("created_at");
+            .HasColumnName("created_at").IsRequired();
         
         builder.Property(p => p.UpdatedAt)
-            .HasConversion(dt => dt.ToUniversalTime(), dt => DateTime.SpecifyKind(dt, DateTimeKind.Utc))
-            .HasColumnName("updated_at");
+            .HasColumnName("updated_at").IsRequired();
         
         builder.Property(p => p.IsActive).HasColumnName("is_active").IsRequired();
     }

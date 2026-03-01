@@ -5,6 +5,7 @@ using DS.Domain.Locations;
 using DS.Infrastructure.Postgres;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -13,9 +14,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DS.Infrastructure.Migrations
 {
     [DbContext(typeof(DirectoryServiseDbContext))]
-    partial class DirectoryServiseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260301131407_reviewEdit")]
+    partial class reviewEdit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,8 +94,7 @@ namespace DS.Infrastructure.Migrations
                 {
                     b.Property<Guid>("DepartmentLocationId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("department_location_id");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uuid")
@@ -116,8 +118,7 @@ namespace DS.Infrastructure.Migrations
                 {
                     b.Property<Guid>("DerpartmentPositionId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("derpartment_position_id");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uuid")
@@ -146,8 +147,7 @@ namespace DS.Infrastructure.Migrations
 
                     b.Property<Address>("Address")
                         .IsRequired()
-                        .HasColumnType("jsonb")
-                        .HasColumnName("address");
+                        .HasColumnType("jsonb");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")

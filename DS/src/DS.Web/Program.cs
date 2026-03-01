@@ -1,4 +1,5 @@
 using DS.Infrastructure.Postgres;
+using DS.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<DirectoryServiseDbContext>(_ =>
-    new DirectoryServiseDbContext(builder.Configuration.GetConnectionString("DsDb")!));
+    new DirectoryServiseDbContext(builder.Configuration.GetConnectionString(Constants.ConnectionStringPostgres)!));
 
 var app = builder.Build();
 
