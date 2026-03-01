@@ -4,6 +4,8 @@ namespace DS.Domain.Locations;
 
 public class Location
 {
+    private readonly List<DepartmentLocation> _departments = [];
+    
     public Guid Id { get; private set; }
     public LocationName Name { get; private set; }
     public Address Address { get; private set; }
@@ -11,7 +13,8 @@ public class Location
     public bool IsActive { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
-    
+
+    public IReadOnlyList<DepartmentLocation> DepartmentLocations => _departments;
 
     private Location() { }
 
