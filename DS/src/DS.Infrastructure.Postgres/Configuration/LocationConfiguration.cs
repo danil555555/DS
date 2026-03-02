@@ -18,8 +18,11 @@ public class LocationConfiguration : IEntityTypeConfiguration<Location>
         {
             ln.Property(l => l.Name).HasColumnName("location_name").IsRequired();
         });
-
-        builder.Property(l => l.Address).HasColumnType("jsonb").HasColumnName("address").IsRequired();
+        
+        builder.OwnsOne(l => l.Address, ab =>
+        {
+            ab.ToJson("addresses");
+        });
 
         builder.ComplexProperty(l => l.Timezone, ltz =>
         {
