@@ -2,13 +2,17 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.13"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.13">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\DS.Application\DS.Application.csproj" />
       <ProjectReference Include="..\DS.Domain\DS.Domain.csproj" />
-      <ProjectReference Include="..\DS.Infrastructure\DS.Infrastructure.csproj" />
+      <ProjectReference Include="..\DS.Infrastructure.Postgres\DS.Infrastructure.Postgres.csproj" />
       <ProjectReference Include="..\DS.Presenters\DS.Presenters.csproj" />
     </ItemGroup>
 
