@@ -8,6 +8,5 @@ public record CreateLocationRequest(
     int StreetNumber,
     int Room,
     int PostalCode,
-    string Timezone
-    );
+    string Timezone);
     
