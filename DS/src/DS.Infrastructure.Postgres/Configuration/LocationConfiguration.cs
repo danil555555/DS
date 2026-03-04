@@ -21,7 +21,7 @@ public class LocationConfiguration : IEntityTypeConfiguration<Location>
         
         builder.OwnsOne(l => l.Address, ab =>
         {
-            ab.ToJson("addresses");
+            ab.ToJson("address");
         });
 
         builder.ComplexProperty(l => l.Timezone, ltz =>

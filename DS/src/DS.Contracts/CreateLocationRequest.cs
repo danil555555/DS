@@ -10,3 +10,4 @@ public record CreateLocationRequest(
     int PostalCode,
     string Timezone
     );
+    

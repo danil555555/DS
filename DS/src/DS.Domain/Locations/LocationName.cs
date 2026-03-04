@@ -18,7 +18,7 @@ public record LocationName
         Name = name;
     }
 
-    public static Result<LocationName>  Create(string name)
+    public static Result<LocationName> Create(string name)
     {
         if (name.Length > MaxLengthName || name.Length < MinLengthName)
         {

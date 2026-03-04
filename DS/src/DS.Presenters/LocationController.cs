@@ -1,4 +1,5 @@
-﻿using DS.Contracts;
+﻿using DS.Application;
+using DS.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DS.Presenters;
@@ -14,6 +15,7 @@ public class LocationController : ControllerBase
         [FromServices] CreateLocationHandler handler,
         [FromBody] CreateLocationRequest request, CancellationToken cancellationToken)
     {
-        var rslt = await 
+        var rslt = await handler.Handle(request, cancellationToken);
+        return Ok(rslt);
     }
 }

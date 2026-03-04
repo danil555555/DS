@@ -1,4 +1,4 @@
-﻿namespace DS.Web;
+﻿namespace DS.Domain.Constants;
 
 public static class Constants
 {
