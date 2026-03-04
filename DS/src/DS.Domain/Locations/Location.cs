@@ -28,13 +28,9 @@ public class Location
         CreatedAt = DateTime.UtcNow;
         UpdatedAt = DateTime.UtcNow;
     }
-
-    public static Result<Location> Create(
-        LocationName name,
-        Address address,
-        Timezone timezone)
+    
+    public static Result<Location> Create(LocationName name, Address address, Timezone timezone)
     {
         return Result.Success(new Location(name, address, timezone));
     }
-    
 }
