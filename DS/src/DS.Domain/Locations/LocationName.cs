@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+using DS.Domain.Shared;
 
 namespace DS.Domain.Locations;
 
@@ -18,12 +19,17 @@ public record LocationName
         Name = name;
     }
 
-    public static Result<LocationName> Create(string name)
+    public static Result<LocationName, Error> Create(string name)
     {
         if (name.Length > MaxLengthName || name.Length < MinLengthName)
         {
-            return Result.Failure<LocationName>($"{name} is too long or short.");
+            return Result.Failure<LocationName, Error>(
+                Error.Validation(
+                    code: "location.name.invalid",
+                    message: $"{name} is too long or short.",
+                    invalidField: "name"));
         }
-        return Result.Success<LocationName>(new LocationName(name));
+        return Result.Success<LocationName, Error>(
+            new LocationName(name));
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DS.Application;
 using DS.Contracts;
+using DS.Presenters.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DS.Presenters;
@@ -16,6 +17,9 @@ public class LocationController : ControllerBase
         [FromBody] CreateLocationRequest request, CancellationToken cancellationToken)
     {
         var rslt = await handler.Handle(request, cancellationToken);
-        return Ok(rslt);
+        if(rslt.IsFailure)
+            return BadRequest(Envelope<Guid>.FromErrors(rslt.Error));
+        
+        return Ok(Envelope<Guid>.Ok(rslt.Value));
     }
 }

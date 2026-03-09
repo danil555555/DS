@@ -1,6 +1,9 @@
-﻿using DS.Application.Database;
+﻿using CSharpFunctionalExtensions;
+using DS.Application.Database;
 using DS.Contracts;
+using DS.Domain;
 using DS.Domain.Locations;
+using DS.Domain.Shared;
 
 namespace DS.Application;
 
@@ -14,14 +17,15 @@ public class CreateLocationHandler
         _locationRepository = locationRepository;
     }
 
-    public async Task<Guid> Handle(
+    public async Task<Result<Guid, Errors>> Handle(
         CreateLocationRequest request,
         CancellationToken cancellationToken)
     {
-        var locatiomName = LocationName.Create(request.Name);
-        if (locatiomName.IsFailure)
+        var locationName = LocationName.Create(request.Name);
+        if (locationName.IsFailure)
         {
-            throw new ArgumentException("Name is empty");
+            return Result.Failure<Guid, Errors>(
+                new Errors(locationName.Error));
         }
         
         var address = Address.Create(
@@ -34,18 +38,20 @@ public class CreateLocationHandler
 
         if (address.IsFailure)
         {
-            throw new ArgumentException("Address is empty");
+            return Result.Failure<Guid, Errors>(
+                new Errors(address.Error));
         }
         
         var timezone = Timezone.Create(request.Timezone);
 
         if (timezone.IsFailure)
         {
-            throw new ArgumentException("Timezone is empty");
+            return Result.Failure<Guid, Errors>(
+                new Errors(timezone.Error));
         }
         
         var location = Location.Create(
-            locatiomName.Value,
+            locationName.Value,
             address.Value,
             timezone.Value
             );
@@ -58,5 +64,7 @@ public class CreateLocationHandler
         await _locationRepository.Add(location.Value, cancellationToken);
 
         return location.Value.Id;
+        
     }
+    
 }
