@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+using DS.Domain.Shared;
 
 namespace DS.Domain.Locations;
 
@@ -27,35 +28,45 @@ public record Address
         PostalCode = postalCode;
     }
 
-    public static Result<Address> Create(string country, string city, string street, int numberStreet, int room, int postalCode)
+    public static Result<Address, Error> Create(string country, string city, string street, int numberStreet, int room, int postalCode)
     {
         if (string.IsNullOrEmpty(country))
         {
-            return Result.Failure<Address>("Country cannot be empty");
+            return Result.Failure<Address, Error>(
+                Error.Validation(null, "Country cannot be empty", nameof(country)));
         }
+
         if (string.IsNullOrEmpty(city))
         {
-            return Result.Failure<Address>("City cannot be empty");
+            return Result.Failure<Address, Error>(
+                Error.Validation(null, "City cannot be empty", nameof(city)));
         }
+
         if (string.IsNullOrEmpty(street))
         {
-            return Result.Failure<Address>("Street cannot be empty");
+            return Result.Failure<Address, Error>(
+                Error.Validation(null, "Street cannot be empty", nameof(street)));
         }
 
         if (numberStreet < 0)
         {
-            return Result.Failure<Address>("NumberStreet cannot be negative");
+            return Result.Failure<Address, Error>(
+                Error.Validation(null, "NumberStreet cannot be negative", nameof(numberStreet)));
         }
 
         if (room < 0)
         {
-            return Result.Failure<Address>("Room cannot be negative");
+            return Result.Failure<Address, Error>(
+                Error.Validation(null, "Room cannot be negative", nameof(room)));
         }
 
         if (postalCode < 0)
         {
-            return Result.Failure<Address>("PostalCode cannot be negative");
+            return Result.Failure<Address, Error>(
+                Error.Validation(null, "PostalCode cannot be negative", nameof(postalCode)));
         }
-        return Result.Success<Address>(new Address(country, city, street, numberStreet, room, postalCode));
+
+        return Result.Success<Address, Error>(
+            new Address(country, city, street, numberStreet, room, postalCode));
     }
 }

@@ -7,6 +7,7 @@
     <ItemGroup>
       <ProjectReference Include="..\DS.Application\DS.Application.csproj" />
       <ProjectReference Include="..\DS.Contracts\DS.Contracts.csproj" />
+      <ProjectReference Include="..\DS.Infrastructure.Postgres\DS.Infrastructure.Postgres.csproj" />
     </ItemGroup>
 
 </Project>
